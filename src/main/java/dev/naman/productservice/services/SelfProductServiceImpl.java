@@ -13,8 +13,11 @@ import java.util.List;
 public class SelfProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
-    public SelfProductServiceImpl(ProductRepository productRepository) {
+    private FakeStoreProductService fakeStoreProductService;
+
+    public SelfProductServiceImpl(ProductRepository productRepository, FakeStoreProductService fakeStoreProductService) {
         this.productRepository = productRepository;
+        this.fakeStoreProductService = fakeStoreProductService;
     }
 
     @Override
@@ -24,7 +27,8 @@ public class SelfProductServiceImpl implements ProductService {
 
     @Override
     public GenericProductDto createProduct(GenericProductDto product) {
-        return null;
+        //productRepository.save(product);
+        return fakeStoreProductService.createProduct(product);
     }
 
     @Override
